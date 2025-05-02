@@ -27,7 +27,7 @@ db.getConnection((err) => {
 });
 
 app.get('/api/data', (req, res) => {
-    db.query("SELECT * FROM cor", (err, results) => {
+    db.query("SELECT * FROM certificate_of_registration", (err, results) => {
         if(err) {
             res.status(500).json({ error: err.message });
         } else {
@@ -36,14 +36,10 @@ app.get('/api/data', (req, res) => {
     });
 });
 
- useEffect(() => {
-    fetch("http://localhost:5000/api/data")
-      .then(res => res.json())
-      .then(data => console.log(data))
-      .catch(err => console.error("Fetch error:", err));
-  }, []);
-  
-app.use(cors({
+ 
+
+
+  app.use(cors({
     origin: 'http://localhost:3000'
   }));
 
